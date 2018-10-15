@@ -19,11 +19,11 @@ SOURCES += main.cpp\
     material.cpp \
     color.cpp \
     camera.cpp \
-    scene.cpp
+    scene.cpp \
+    cone.cpp
 
 HEADERS  += mainwindow.h \
     vec3.h \
-    sphere.h \
     point.h \
     ray.h \
     intersection.h \
@@ -31,6 +31,8 @@ HEADERS  += mainwindow.h \
     color.h \
     camera.h \
     scene.h \
-    cone.h
+    polygon.h \
+    cone.h \
+    sphere.h
 
 FORMS    += mainwindow.ui
