@@ -3,6 +3,8 @@
 
 #include<vector>
 #include "sphere.h"
+#include "cone.h"
+#include "polygon.h"
 
 
 struct Light {
@@ -22,8 +24,9 @@ public:
 
     void addSphere(const Point& center, float radius, Material mat);
 
+    void addCone(const Point& top, const Point& base, float radius, Material mat);
 
-    std::vector<Sphere*> objects;
+    std::vector<Polygon*> objects;
 
     std::vector<Light> lights;
 };

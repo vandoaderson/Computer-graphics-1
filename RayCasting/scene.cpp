@@ -18,7 +18,7 @@ bool Scene::intersect(const Ray& ray, Intersection &intersect) {
     float dist = FLT_MAX;
     Intersection closest;   //we want the closest intersection
 
-    for(std::vector<Sphere*>::iterator iter = objects.begin(); iter != objects.end(); iter++) {
+    for(std::vector<Polygon*>::iterator iter = objects.begin(); iter != objects.end(); iter++) {
 
         Intersection inter = (*iter)->intersect(ray);
 
@@ -59,4 +59,15 @@ void Scene::addSphere(const Point& center, float radius, Material mat)
     s->material=mat;
 
     objects.push_back(s);
+}
+
+/**
+ * Add a Cone
+ **/
+void Scene::addCone(const Point& top, const Point& base, float radius, Material mat)
+{
+    Cone *c = new Cone(top, base, radius);
+    c->material=mat;
+
+    objects.push_back(c);
 }

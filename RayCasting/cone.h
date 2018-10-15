@@ -5,8 +5,9 @@
 #include "vec3.h"
 #include "ray.h"
 #include "intersection.h"
+#include "polygon.h"
 
-class Cone
+class Cone: public Polygon
 {
 public:
     Cone();

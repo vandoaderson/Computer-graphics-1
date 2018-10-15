@@ -41,6 +41,8 @@ void MainWindow::createScene()
     scene.addSphere( Point(0,-0.5,0), 0.1, material_red ); // Button 2
     scene.addSphere( Point(0,-1,0), 0.1, material_red ); // Button 3
 
+//    scene.addCone(Point(0,0,0), Point(0,1,0), 1, material_gold);
+
     //=====================================================================================================
     scene.addLight(Point{0, 10, 20}, 1.0, 1.0, 1.0, 0.0001);     ///NORMAL WHITE LIGHT
     //=====================================================================================================
