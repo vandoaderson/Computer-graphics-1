@@ -10,8 +10,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    sizeX = 620;
-    sizeY = 620;
+    sizeX = 800;
+    sizeY = 650;
 
     createScene();
 
@@ -31,20 +31,20 @@ void MainWindow::createScene()
     Material material_green( Color(0.0, 0.2, 0.0), Color(0.0, 0.9, 0.0), Color(1.0, 1.0, 1.0), 50, 1.0, 1.0, 0.1 );      ///GREEN
     Material material_white( Color(0.2, 0.2, 0.2), Color(1.0, 1.0, 1.0), Color(1.0, 1.0, 1.0), 200, 1.0, 1.0, 0.05 );      ///WHITE
     //=====================================================================================================
-    scene.addSphere( Point(0,-1,-10), 3, material_white ); // Body
-    scene.addSphere( Point(0,4,-10), 2, material_white ); // Head
+    scene.addSphere( Point(6,-6,-20), 3, material_white ); // Body
+    scene.addSphere( Point(6,-1,-20), 2, material_white ); // Head
 
-    scene.addSphere( Point(0.5,2.2,0), 0.1, material_blue ); // Right eye
-    scene.addSphere( Point(-0.5,2.2,0), 0.1, material_blue ); // Left eye
+    scene.addSphere( Point(6.5,-0.5,-18), 0.2, material_blue ); // Right eye
+    scene.addSphere( Point(5.5,-0.5,-18), 0.2, material_blue ); // Left eye
 
-    scene.addSphere( Point(0,0,0), 0.1, material_red ); // Button 1
-    scene.addSphere( Point(0,-0.5,0), 0.1, material_red ); // Button 2
-    scene.addSphere( Point(0,-1,0), 0.1, material_red ); // Button 3
+    scene.addSphere( Point(6,-4,-17), 0.1, material_red ); // Button 1
+    scene.addSphere( Point(6,-5,-17), 0.1, material_red ); // Button 2
+    scene.addSphere( Point(6,-6,-17), 0.1, material_red ); // Button 3
 
 //    scene.addCone(Point(0,0,0), Point(0,1,0), 1, material_gold);
 
     //=====================================================================================================
-    scene.addLight(Point{0, 10, 20}, 1.0, 1.0, 1.0, 0.0001);     ///NORMAL WHITE LIGHT
+    scene.addLight(Point{10, 10, 20}, 1.0, 1.0, 1.0, 0.0001);     ///NORMAL WHITE LIGHT
     //=====================================================================================================
     camera = new Camera(sizeX, sizeY);
     camera->setPos( Point{0, 0, 10} );
@@ -54,6 +54,9 @@ void MainWindow::createScene()
 void MainWindow::render()
 {
     QImage image = QImage( sizeX, sizeY, QImage::Format_RGB32 );
+
+    QImage bg("/home/victor/Documentos/UFC/CG/Trabalhos/Snowman/Computer-graphics-2/Computer-graphics-1/RayCasting/sabiaguaba.jpg");
+    bg = bg.scaled(sizeX, sizeY);
 
     for( int l=0; l<sizeX; l++ )
     {
@@ -104,7 +107,8 @@ void MainWindow::render()
             else
             {
                 ///Background color
-                image.setPixel( l, c, qRgb(10, 10, 10) );
+//                image.setPixel( l, c, qRgb(100, 100, 100) );
+                image.setPixel( l, c, bg.pixelColor(l, c).rgba());
             }
         }
     }
